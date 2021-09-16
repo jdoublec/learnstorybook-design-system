@@ -7,6 +7,16 @@ export default {
   component: Avatar,
 };
 
+const Template = args => <Avatar {...args} />;
+
+export const Controls = Template.bind({});
+Controls.args = {
+  loading: false,
+  size: 'large',
+  username: 'Dominic Nguyen',
+  src: 'https://avatars2.githubusercontent.com/u/263385',
+};
+
 export const Standard = (args) => <Avatar {...args} />;
 Standard.args = {
   size: "large",
