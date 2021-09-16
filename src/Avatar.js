@@ -19,11 +19,9 @@ const Image = styled.div`
   vertical-align: top;
   overflow: hidden;
   text-transform: uppercase;
-
   height: ${sizes.medium}px;
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
-
   ${props =>
     props.size === 'tiny' &&
     css`
@@ -31,7 +29,6 @@ const Image = styled.div`
       width: ${sizes.tiny}px;
       line-height: ${sizes.tiny}px;
     `}
-
   ${props =>
     props.size === 'small' &&
     css`
@@ -39,7 +36,6 @@ const Image = styled.div`
       width: ${sizes.small}px;
       line-height: ${sizes.small}px;
     `}
-
   ${props =>
     props.size === 'large' &&
     css`
@@ -47,19 +43,16 @@ const Image = styled.div`
       width: ${sizes.large}px;
       line-height: ${sizes.large}px;
     `}
-
   ${props =>
     !props.src &&
     css`
       background: ${!props.loading && '#37D5D3'};
     `}
-
   img {
     width: 100%;
     height: auto;
     display: block;
   }
-
   svg {
     position: relative;
     bottom: -2px;
@@ -67,7 +60,6 @@ const Image = styled.div`
     width: 100%;
     vertical-align: top;
   }
-
   path {
     fill: ${color.medium};
     animation: ${glow} 1.5s ease-in-out infinite;
@@ -78,25 +70,26 @@ const Image = styled.div`
 const Initial = styled.div`
   color: ${color.lightest};
   text-align: center;
-
   font-size: ${typography.size.s2}px;
   line-height: ${sizes.medium}px;
-
   ${props => props.size === "tiny" && css`
     font-size: ${typography.size.s1 - 2}px;
     line-height: ${sizes.tiny}px;
   `}
-
   ${props => props.size === "small" && css`
     font-size: ${typography.size.s1}px;
     line-height: ${sizes.small}px;
   `}
-
   ${props => props.size === "large" && css`
     font-size: ${typography.size.s3}px;
     line-height: ${sizes.large}px;
   `}
 `;
+
+/**
+- Use an avatar for attributing actions or content to specific users.
+- The user's name should always be present when using Avatar – either printed beside the avatar or in a tooltip.
+**/
 
 export function Avatar({ loading, username, src, size, ...props }) {
   let avatarFigure = <Icon icon="useralt" />;
@@ -124,9 +117,21 @@ export function Avatar({ loading, username, src, size, ...props }) {
 }
 
 Avatar.propTypes = {
+  /**
+   Use the loading state to indicate that the data Avatar needs is still loading. 
+  */
   loading: PropTypes.bool,
+  /**
+   Avatar falls back to the user’s initial when no image is provided. Supply a `username` and omit `src` to see what this looks like.
+  */
   username: PropTypes.string,
+  /**
+   The URL of the Avatar's image.
+  */
   src: PropTypes.string,
+  /**
+   Avatar comes in four sizes. In most cases, you’ll be fine with `medium`. 
+  */
   size: PropTypes.oneOf(Object.keys(sizes)),
 };
 
